@@ -1,0 +1,31 @@
+DOI: 10.5281/zenodo.11614468
+TRJ: 566.xtc
+TPR: 566.tpr
+SOFTWARE: gromacs
+PREEQTIME: 0
+TIMELEFTOUT: 0
+DIR_WRK: /usr/home/bort/Databank
+UNITEDATOM_DICT: ''
+TYPEOFSYSTEM: ''
+SYSTEM: 120POPC_8CHOL_3968SOL_303K
+PUBLICATION: ''
+AUTHORS_CONTACT: Jesper J Madsen
+BATCHID: ''
+SOFTWARE_VERSION: 5.0.4
+FF: Lipid14
+FF_SOURCE: ''
+FF_DATE: ''
+CPT: ''
+LOG: ''
+TOP: ''
+EDR: ''
+COMPOSITION:
+  POPC:
+    name: PC
+    mapping: mappingPOPClipid14.yaml
+  CHOL:
+    name: CHL
+    mapping: mappingCHOLESTEROLlipid14.yaml
+  SOL:
+    name: WAT
+    mapping: mappingwaterlipid14.yaml
