@@ -36,7 +36,6 @@ jobs:
         run: |
           pip install -e .  -r ./Scripts/DatabankLib/requirements-dev.txt
           python Scripts/WorkflowScripts/DockerRunInstructions/ProcessUserInfoFile.py
-          - name: Commit & push updated simulations
        
       - name: Commit & push updated simulations
         uses: EndBug/add-and-commit@v9   
