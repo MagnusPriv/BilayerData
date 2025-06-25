@@ -12,7 +12,7 @@ jobs:
   AddData:
     runs-on: nrec-large
     container:
-      image: nmrlipids/github-runner
+      image: nmrlipids/core-update
       options: --user 1000:1000
     env:
       NMLDB_DATA_PATH: ${{ github.workspace }}/BilayerData
