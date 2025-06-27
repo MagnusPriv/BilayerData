@@ -6,7 +6,7 @@ permissions:
 on:
   push:
     paths:
-      - 'UserData/**'
+      - 'UserDatasdsds/**'
 
 jobs:
   AddData:
