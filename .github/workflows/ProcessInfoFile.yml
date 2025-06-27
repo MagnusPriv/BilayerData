@@ -1,16 +1,18 @@
-name: Process info file
+name: Process info file from pull request
 
 permissions:
   contents: write
 
 on:
-  push:
+  pull_request:
     paths:
-      - 'UserDatasdsds/**'
+      - 'UserData/**'
 
 jobs:
   AddData:
+    if: ${{ github.event.pull_request.head.repo.full_name == 'MagnusPriv/BilayerData' && github.repository == 'MagnusPriv/BilayerData' }}
     runs-on: nrec-large
+    environment: user_data_addition
     container:
       image: nmrlipids/core-update
       options: --user 1000:1000
@@ -18,9 +20,12 @@ jobs:
       NMLDB_DATA_PATH: ${{ github.workspace }}/BilayerData
       NMLDB_SIMU_PATH: ${{ github.workspace }}/BilayerData/Simulations
     steps:
-      - name: Checkout BilayerData (this repository)
+      - name: Checkout BilayerData
         uses: actions/checkout@v4
         with:
+          token: ${{ secrets.USER_DATA_TOKEN }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
           path: BilayerData
 
       - name: Checkout Databank
@@ -33,19 +38,16 @@ jobs:
       - name: Compute new data
         env:
           TQDM_DISABLE: "True"
-        working-directory: "Databank" 
+        working-directory: "Databank"
         run: |
-          pip install -e .  -r ./Scripts/DatabankLib/requirements-dev.txt
+          pip install -e . -r ./Scripts/DatabankLib/requirements-dev.txt
           python Scripts/WorkflowScripts/ProcessInfoFile.py \
             --info_file_path ../BilayerData/UserData
-       
+
       - name: Commit & push updated simulations
-        uses: EndBug/add-and-commit@v9   
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: EndBug/add-and-commit@v9
         with:
-          cwd: BilayerData            
-          add: "${{ env.NMLDB_SIMU_PATH }}/*"   
-          message: "Automated addition of simulation data"
-          default_author: github_actions        
+          cwd: BilayerData
+          add: "${{ env.NMLDB_SIMU_PATH }}/*"
+          message: "Automated addition of simulations"
 
