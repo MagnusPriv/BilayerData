@@ -34,8 +34,8 @@ jobs:
       - name: Checkout Databank
         uses: actions/checkout@v4
         with:
-          repository: MagnusSletten/Databank
-          ref: data_collision_fix
+          repository: NMRLipids/Databank
+          ref: main
           path: Databank
 
       - name: Compute new data
