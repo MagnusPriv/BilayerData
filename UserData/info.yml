@@ -1,0 +1,30 @@
+DOI: 10.5281/zenodo.6992065
+TRJ: CHOL0_small.xtc
+TPR: CHOL0_small.tpr
+SOFTWARE: gromacs
+DIR_WRK: /media/osollila/Data1/tmp/DATABANK/
+PREEQTIME: 0
+TIMELEFTOUT: 100
+UNITEDATOM_DICT: null
+TYPEOFSYSTEM: null
+TEMPERATURE: null
+SYSTEM: Lipid17_POPC_S
+PUBLICATION: null
+AUTHORS_CONTACT: Matti Javanainen
+BATCHID: null
+SOFTWARE_VERSION: '2021'
+FF: lipid17
+FF_SOURCE: 10.5281/zenodo.2585523
+FF_DATE: null
+CPT: CHOL0_small.cpt
+LOG: null
+TOP: CHOL0_small.top
+GRO: null
+EDR: null
+COMPOSITION:
+  POPC:
+    NAME: PC
+    MAPPING: mappingPOPClipid17.yaml
+  SOL:
+    NAME: TP3
+    MAPPING: mappingTIP3Plipid17.yaml
