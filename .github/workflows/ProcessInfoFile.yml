@@ -13,6 +13,7 @@ jobs:
     if: "${{ github.event.pull_request.head.repo.full_name == 'MagnusSletten/BilayerData' && github.repository == 'MagnusPriv/BilayerData' }}"
     runs-on: nrec-large
     environment: user_data_addition
+    timeout-minutes: 720
     container:
       image: nmrlipids/core
       options: --user 1000:1000
