@@ -49,8 +49,6 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           cwd: BilayerData
-          add: |
-            Simulations/**/*.yml
-            Simulations/**/*.json
-            UserData/**/*.yml
+          add: "Simulations/**/*.yaml Simulations/**/*.json UserData/**/*.yml"
           message: "Processed info file and updated simulations"
+
