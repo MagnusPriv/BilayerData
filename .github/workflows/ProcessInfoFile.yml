@@ -38,6 +38,8 @@ jobs:
 
       - name: Compute new data
         working-directory: "Databank"
+        env: 
+          TQDM_DISABLE: False 
         run: |
           pip install -e . -r ./Scripts/DatabankLib/requirements.txt
           python Scripts/WorkflowScripts/ProcessInfoFile.py \
