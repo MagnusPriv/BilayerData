@@ -37,8 +37,6 @@ jobs:
           path: Databank
 
       - name: Compute new data
-        env:
-          TQDM_DISABLE: "False"
         working-directory: "Databank"
         run: |
           pip install -e . -r ./Scripts/DatabankLib/requirements.txt
