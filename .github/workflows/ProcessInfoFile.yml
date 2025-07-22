@@ -50,6 +50,6 @@ jobs:
         with:
           cwd: BilayerData
           add: '["Simulations/**/*.yaml", "Simulations/**/*.json"]'
-          remove: '["UserData/**/*.yml"]'
+          remove: UserData/*.yml
           message: "Processed info file and updated simulations"
 
