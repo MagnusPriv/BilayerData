@@ -1,0 +1,19 @@
+DOI: 10.5281/zenodo.1293889
+TRJ: md-POPE_berger_303K_repH_v1_100-200ns.xtc
+TPR: for-md-POPE_berger_303K_repH_v1.tpr
+SOFTWARE: gromacs
+PREEQTIME: 100
+TIMELEFTOUT: 0
+UNITEDATOM_DICT:
+  POPE: Berger_POPE
+SYSTEM: 128POPE_3552SOL_303K_v1
+SOFTWARE_VERSION: 4.0.7
+FF: Berger-POPE-2004
+GRO: md-POPE_berger_303K_repH_v1.gro
+COMPOSITION:
+  POPE:
+    NAME: POPE
+    MAPPING: mappingPOPEberger.yaml
+  SOL:
+    NAME: SOL
+    MAPPING: mappingSPCwater.yaml
