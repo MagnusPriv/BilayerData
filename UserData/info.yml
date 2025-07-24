@@ -1,0 +1,23 @@
+DOI: 10.5281/zenodo.1402449
+TRJ: md_dt100_OK_centered.xtc
+TPR: md.tpr
+SOFTWARE: gromacs
+PREEQTIME: 0
+TIMELEFTOUT: 100
+UNITEDATOM_DICT:
+  POPC: Berger_POPC
+  POPE: Berger_POPE
+SYSTEM: 128POPC_128POPE_11096SOL_300K_Berger
+SOFTWARE_VERSION: 4.0.7
+FF: Berger
+GRO: start.gro
+COMPOSITION:
+  POPC:
+    NAME: POPC
+    MAPPING: mappingPOPCberger.yaml
+  POPE:
+    NAME: POPE
+    MAPPING: mappingPOPEberger.yaml
+  SOL:
+    NAME: SOL
+    MAPPING: mappingSPCwater.yaml
