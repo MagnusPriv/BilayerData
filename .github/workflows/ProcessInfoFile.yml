@@ -58,7 +58,9 @@ jobs:
         run: |
           git config user.name "simulation-addition-helper[bot]"
           git config user.email "simulation-addition-helper[bot]@users.noreply.github.com"
-          git remote set-url origin https://x-access-token:${{ steps.app-token.outputs.token }}@github.com/${{ github.event.pull_request.head.repo.full_name }}.git
+          TOKEN='${{ steps.app-token.outputs.token }}'
+          REPO='${{ github.event.pull_request.head.repo.full_name }}'
+          git remote set-url origin "https://x-access-token:${TOKEN}@github.com/${REPO}.git"
           git add Simulations/**/*.yaml Simulations/**/*.json
           git rm UserData/*.yml 
           git commit -m "Process info.yml" 
