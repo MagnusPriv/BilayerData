@@ -61,5 +61,5 @@ jobs:
           git remote set-url origin https://x-access-token:${{ steps.app-token.outputs.token }}@github.com/${{ github.event.pull_request.head.repo.full_name }}.git
           git add Simulations/**/*.yaml Simulations/**/*.json
           git rm UserData/*.yml 
-          git commit -m "Compute info file processing" 
+          git commit -m "Process info.yml" 
           git push 
