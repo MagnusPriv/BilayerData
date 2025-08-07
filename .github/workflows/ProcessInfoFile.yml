@@ -10,9 +10,10 @@ on:
       - 'UserData/**'
 jobs:
   AddData:
-    if: "${{ github.event.pull_request.head.repo.full_name == 'NMRLipids/UserData' && github.repository == 'NMRLipids/BilayerData' }}"
+    if: "${{ github.event.pull_request.head.repo.full_name == 'MagnusSletten/BilayerData' && github.repository == 'MagnusPriv/BilayerData' }}"
     runs-on: nrec-large
     environment: user_data_addition
+    timeout-minutes: 720
     container:
       image: nmrlipids/core
       options: --user 1000:1000
@@ -20,21 +21,13 @@ jobs:
       NMLDB_DATA_PATH: ${{ github.workspace }}/BilayerData
       NMLDB_SIMU_PATH: ${{ github.workspace }}/BilayerData/Simulations
     steps:
-      - uses: actions/create-github-app-token@v2
-        id: app-token
-        with:
-          app-id:       ${{ vars.APP_ID }}
-          private-key:  ${{ secrets.APP_PRIVATE_KEY }}
-          owner:        NMRLipids           
-          repositories: UserData
-
       - name: Checkout BilayerData
         uses: actions/checkout@v4
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
           path: BilayerData
-          token: ${{ steps.app-token.outputs.token }} 
+          persist-credentials: false
 
       - name: Checkout Databank
         uses: actions/checkout@v4
@@ -51,11 +44,22 @@ jobs:
           pip install -e . -r ./Scripts/DatabankLib/requirements.txt
           python Scripts/WorkflowScripts/ProcessInfoFile.py \
             --info_file_path ../BilayerData/UserData/info.yml
-
-      - name: Commit & push simulation files
-        uses: EndBug/add-and-commit@v9
+    
+      - uses: actions/create-github-app-token@v2  
+        id: app-token
         with:
-          cwd: BilayerData
-          add: '["Simulations/**/*.yaml", "Simulations/**/*.json"]'
-          remove: UserData/*.yml
-          message: "Processed info file and updated simulations"
+          app-id:       ${{ vars.APP_ID }}
+          private-key:  ${{ secrets.APP_PRIVATE_KEY }}
+          owner:        MagnusSletten           
+          repositories: BilayerData
+      
+      - name: Add, commit and push changes 
+        working-directory: BilayerData
+        run: |
+          git config user.name "simulation-addition-helper[bot]"
+          git config user.email "simulation-addition-helper[bot]@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${{ steps.app-token.outputs.token }}@github.com/${{ github.event.pull_request.head.repo.full_name }}.git
+          git add Simulations/**/*.yaml Simulations/**/*.json
+          git rm UserData/*.yml 
+          git commit -m "[BOT] Automatic processing of info file" 
+          git push 
