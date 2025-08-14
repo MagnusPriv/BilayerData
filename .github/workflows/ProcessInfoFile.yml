@@ -10,10 +10,10 @@ on:
       - 'UserData/**'
 jobs:
   AddData:
-    if: "${{ github.event.pull_request.head.repo.full_name == 'NMRLipids/UserData' && github.repository == 'NMRLipids/BilayerData' }}"
+    if: "${{ github.event.pull_request.head.repo.full_name == 'MagnusSletten/BilayerData' && github.repository == 'MagnusPriv/BilayerData' }}"
     runs-on: nrec-large
     environment: user_data_addition
-    timeout-minutes: 1440
+    timeout-minutes: 720
     container:
       image: nmrlipids/core
       options: --user 1000:1000
@@ -63,5 +63,5 @@ jobs:
           git remote set-url origin "https://x-access-token:${TOKEN}@github.com/${REPO}.git"
           git add Simulations/**/*.yaml Simulations/**/*.json
           git rm UserData/*.yml 
-          git commit -m "Process info.yml [bot]" 
+          git commit -m "Process info.yml" 
           git push 
