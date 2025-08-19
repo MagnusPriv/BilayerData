@@ -32,8 +32,8 @@ jobs:
       - name: Checkout Databank
         uses: actions/checkout@v4
         with:
-          repository: NMRLipids/Databank
-          ref: main
+          repository: MagnusSletten/Databank
+          ref: log-duplication
           path: Databank
 
       - name: Compute new data
