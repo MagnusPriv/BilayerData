@@ -34,6 +34,7 @@ jobs:
         with:
           repository: NMRLipids/Databank
           ref: main
+          path: Databank
           
       - name: Compute new data
         env:
