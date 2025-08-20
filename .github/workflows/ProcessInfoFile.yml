@@ -32,10 +32,9 @@ jobs:
       - name: Checkout Databank
         uses: actions/checkout@v4
         with:
-          repository: MagnusSletten/Databank
-          ref: log-duplication
-          path: Databank
-
+          repository: NMRLipids/Databank
+          ref: main
+          
       - name: Compute new data
         env:
           TQDM_DISABLE: True
