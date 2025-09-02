@@ -32,8 +32,8 @@ jobs:
       - name: Checkout Databank
         uses: actions/checkout@v4
         with:
-          repository: NMRLipids/Databank
-          ref: main
+          repository: MagnusSletten/Databank
+          ref: workflow-update
           path: Databank
           
       - name: Compute new data
@@ -43,7 +43,7 @@ jobs:
         run: |
           pip install -e . -r ./Scripts/DatabankLib/requirements.txt
           python Scripts/WorkflowScripts/ProcessInfoFile.py \
-            --info_file_path ../BilayerData/UserData/info.yml
+            --info_file_path ../BilayerData/UserData/info.yml --dry_run
     
       - uses: actions/create-github-app-token@v2
         id: app-token
