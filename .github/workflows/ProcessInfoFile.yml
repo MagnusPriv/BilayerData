@@ -34,7 +34,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: MagnusSletten/Databank
-          ref: ruff-tests
+          ref: workflow-update
           path: Databank
           
       - name: Compute new data
