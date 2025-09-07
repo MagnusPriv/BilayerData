@@ -9,7 +9,7 @@ on:
     paths:
       - 'UserData/**'
 jobs:
-  AddData:
+  ValidateInfoFile:
     if: "${{ github.event.pull_request.head.repo.full_name == 'MagnusSletten/BilayerData' && github.repository == 'MagnusPriv/BilayerData' }}"
     runs-on: nrec-large
     timeout-minutes: 1440
@@ -42,4 +42,4 @@ jobs:
         run: |
           pip install -e . -r ./Scripts/DatabankLib/requirements.txt
           python Scripts/WorkflowScripts/ProcessInfoFile.py \
-            --info_file_path ../BilayerData/UserData/info.yml --dry_run
+            --info_file_path ../BilayerData/UserData/info.yml --dry-run
