@@ -31,7 +31,7 @@ jobs:
       - name: Checkout Databank
         uses: actions/checkout@v4
         with:
-          repository: NMRLipids/Databank
+          repository: MagnusSletten/Databank
           ref: workflow-update
           path: Databank
 
