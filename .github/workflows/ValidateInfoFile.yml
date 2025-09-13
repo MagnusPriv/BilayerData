@@ -10,9 +10,8 @@ on:
       - 'UserData/**'
 jobs:
   ValidateInfoFile:
-    if: "${{ github.event.pull_request.head.repo.full_name == 'MagnusSletten/BilayerData' && github.repository == 'MagnusPriv/BilayerData' }}"
+    if: github.event.pull_request.head.repo.full_name == 'MagnusSletten/BilayerData' && github.repository == 'MagnusPriv/BilayerData
     runs-on: ubuntu-latest
-    timeout-minutes: 1440
     container:
       image: nmrlipids/core
       options: --user 1001:118
@@ -31,8 +30,8 @@ jobs:
       - name: Checkout Databank
         uses: actions/checkout@v4
         with:
-          repository: MagnusSletten/Databank
-          ref: workflow-update
+          repository: NMRlipids/Databank
+          ref: main
           path: Databank
 
       - name: Run dry run of AddData 
