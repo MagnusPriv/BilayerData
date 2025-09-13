@@ -17,6 +17,7 @@ jobs:
       options: --user 1001:118 # run container as uid=1001,gid=118 to match the GitHub runner user
     env:
       NMLDB_DATA_PATH: ${{ github.workspace }}/BilayerData
+      PYTHONPATH: ${{ github.workspace }}/Databank
     steps:
       - name: Checkout BilayerData
         uses: actions/checkout@v4
@@ -38,6 +39,6 @@ jobs:
           TQDM_DISABLE: True
         working-directory: Databank
         run: |
-          pip install -e . -r ./Scripts/DatabankLib/requirements.txt
+          pip install . -r ./Scripts/DatabankLib/requirements.txt
           python Scripts/WorkflowScripts/ProcessInfoFile.py \
             --info_file_path ../BilayerData/UserData/info.yml --dry-run
