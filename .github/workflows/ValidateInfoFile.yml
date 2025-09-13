@@ -11,7 +11,7 @@ on:
 jobs:
   ValidateInfoFile:
     if: "${{ github.event.pull_request.head.repo.full_name == 'MagnusSletten/BilayerData' && github.repository == 'MagnusPriv/BilayerData' }}"
-    runs-on: nrec-large
+    runs-on: ubuntu-latest
     timeout-minutes: 1440
     container:
       image: nmrlipids/core
