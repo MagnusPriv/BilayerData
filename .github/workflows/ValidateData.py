@@ -1,0 +1,38 @@
+on: 
+    pull_request: 
+        branches: main
+        paths: "Molecules/**"
+jobs: 
+    Check_Databank_validity:
+        runs-on: ubuntu-latest
+        container:
+            image: nmrlipids/core
+            options: --user 1000:1000
+        env:
+            NMLDB_DATA_PATH: ${{ github.workspace }}/BilayerData
+            NMLDB_SIMU_PATH: ${{ github.workspace }}/BilayerData/Simulations
+        steps:
+          - name: Checkout BilayerData
+            uses: actions/checkout@v4
+            with:
+                repository: ${{ github.event.pull_request.head.repo.full_name }}
+                ref: ${{ github.event.pull_request.head.ref }}
+                path: BilayerData
+
+          - name: Checkout Databank
+            uses: actions/checkout@v4
+            with:
+                repository: NMRLipids/Databank
+                ref: workflow-update
+                path: Databank
+            
+          - name: Install
+            working-directory: "Databank"
+            run: |
+               pip install -e . -r ./Scripts/DatabankLib/requirements.txt
+
+          - name: Validate
+            working-directory: "Databank"
+            run: |
+              python Scripts/WorkflowScripts/ValidateData.py
+
