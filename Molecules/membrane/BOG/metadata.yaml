@@ -4,7 +4,7 @@ NMRlipids:
   charge:
 sameAs:
   ChEBI: CHEBI:41128
-  pubchem.compound: 62852
+  pubchem.compound: 62s852
   metabolights: MTBLC41128
   pdb.ligand: BOG
 bioschema_properties:
