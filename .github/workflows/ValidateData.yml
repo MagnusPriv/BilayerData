@@ -1,9 +1,14 @@
+name: Validate Molecules
+permissions:
+  contents: read
+
 on: 
-    pull_request_target: 
-        branches: main
-        paths: "Molecules/**"
+  pull_request_target: 
+      branches: main
+      paths: Molecules/**
 jobs: 
-    Check_Databank_validity:
+    Validate_Databank:
+        if: github.repository == 'MagnusPriv/BilayerData' 
         runs-on: ubuntu-latest
         container:
             image: nmrlipids/core
@@ -22,8 +27,8 @@ jobs:
           - name: Checkout Databank
             uses: actions/checkout@v4
             with:
-                repository: MagnusSletten/Databank
-                ref: workflow-update
+                repository: NMRlipids/Databank
+                ref: main
                 path: Databank
             
           - name: Install
@@ -35,4 +40,5 @@ jobs:
             working-directory: "Databank"
             run: |
               python Scripts/WorkflowScripts/ValidateData.py
+
 
