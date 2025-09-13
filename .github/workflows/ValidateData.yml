@@ -15,7 +15,6 @@ jobs:
             options: --user 1001:118
         env:
             NMLDB_DATA_PATH: ${{ github.workspace }}/BilayerData
-            NMLDB_SIMU_PATH: ${{ github.workspace }}/BilayerData/Simulations
         steps:
           - name: Checkout BilayerData
             uses: actions/checkout@v4
@@ -31,10 +30,10 @@ jobs:
                 ref: main
                 path: Databank
             
-          - name: Install
+          - name: Install Databank dependencies
             working-directory: "Databank"
             run: |
-               pip install -e . -r ./Scripts/DatabankLib/requirements.txt
+               pip install . -r ./Scripts/DatabankLib/requirements.txt
 
           - name: Validate
             working-directory: "Databank"
