@@ -5,7 +5,7 @@ NMRlipids:
 sameAs:
   ChEBI: CHEBI:41128
   pubchem.compound: 62s852
-  metabolights: MTBLC41128
+  metabolights: MTBLC41128s
   pdb.ligand: BOG
 bioschema_properties:
   iupacName: (2R,3S,4S,5R,6R)-2-(hydroxymethyl)-6-octoxyoxane-3,4,5-triol
