@@ -45,7 +45,7 @@ jobs:
         working-directory: "Databank"
         run: |
           pip install .[dev]
-          python Scripts/WorkflowScripts/RunAnalysis.py 
+          python developer/RunAnalysis.py 
            
       - name: Create Pull Request with simulation updates
         uses: peter-evans/create-pull-request@v7
