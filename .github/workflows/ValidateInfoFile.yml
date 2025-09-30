@@ -30,8 +30,8 @@ jobs:
       - name: Checkout Databank
         uses: actions/checkout@v4
         with:
-          repository: NMRlipids/Databank
-          ref: main
+          repository: MagnusSletten/Databank
+          ref: restructure
           path: Databank
 
       - name: Run dry run of AddData 
