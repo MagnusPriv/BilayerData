@@ -40,5 +40,5 @@ jobs:
         working-directory: Databank
         run: |
           pip install .[dev]
-          python Scripts/WorkflowScripts/ProcessInfoFile.py \
+          python developer/ProcessInfoFile.py \
             --info_file_path ../BilayerData/UserData/info.yml --dry-run
