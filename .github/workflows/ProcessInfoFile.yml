@@ -34,16 +34,16 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: MagnusSletten/Databank
-          ref: workflow-update
+          ref: restructure
           path: Databank
-          
-      - name: Compute new data
+
+      - name: Run dry run of AddData 
         env:
           TQDM_DISABLE: True
         working-directory: Databank
         run: |
-          pip install -e . -r ./Scripts/DatabankLib/requirements.txt
-          python Scripts/WorkflowScripts/ProcessInfoFile.py \
+          pip install .[dev]
+          python developer/ProcessInfoFile.py \
             --info_file_path ../BilayerData/UserData/info.yml 
     
       - uses: actions/create-github-app-token@v2
