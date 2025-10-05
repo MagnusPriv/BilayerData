@@ -38,6 +38,6 @@ jobs:
           - name: Validate
             working-directory: "Databank"
             run: |
-              python Scripts/WorkflowScripts/ValidateData.py
+              python developer/ValidateData.py
 
 
