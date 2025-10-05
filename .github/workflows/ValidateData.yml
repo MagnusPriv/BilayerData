@@ -33,7 +33,7 @@ jobs:
           - name: Install Databank dependencies
             working-directory: "Databank"
             run: |
-               pip install . -r ./Scripts/DatabankLib/requirements.txt
+               pip install . 
 
           - name: Validate
             working-directory: "Databank"
