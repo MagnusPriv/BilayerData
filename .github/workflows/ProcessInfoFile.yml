@@ -33,8 +33,8 @@ jobs:
       - name: Checkout Databank
         uses: actions/checkout@v4
         with:
-          repository: MagnusSletten/Databank
-          ref: restructure
+          repository: NMRlipids/Databank
+          ref: main
           path: Databank
 
       - name: Run dry run of AddData 
@@ -42,7 +42,7 @@ jobs:
           TQDM_DISABLE: True
         working-directory: Databank
         run: |
-          pip install .[dev]
+          pip install .
           python developer/ProcessInfoFile.py \
             --info_file_path ../BilayerData/UserData/info.yml 
     
