@@ -35,8 +35,8 @@ jobs:
       - name: Checkout Databank
         uses: actions/checkout@v4
         with:
-          repository: MagnusSletten/Databank
-          ref: restructure
+          repository: NMRLipids/Databank
+          ref: main
           path: Databank
 
       - name: Compute new data
@@ -44,7 +44,7 @@ jobs:
           TQDM_DISABLE: "True"
         working-directory: "Databank"
         run: |
-          pip install .[dev]
+          pip install .
           python developer/RunAnalysis.py 
            
       - name: Create Pull Request with simulation updates
