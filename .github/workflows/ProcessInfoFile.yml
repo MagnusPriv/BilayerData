@@ -40,7 +40,8 @@ jobs:
       - name: Run dry run of AddData 
         env:
           TQDM_DISABLE: True
-        working-directory: Databank
+          NML_STRICT_MODE: "1"
+        working-directory: Databank          
         run: |
           pip install .
           python developer/ProcessInfoFile.py \
