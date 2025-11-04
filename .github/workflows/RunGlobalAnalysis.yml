@@ -24,7 +24,7 @@ jobs:
       image: nmrlipids/core
       options: --user 1001:118
     env:
-      NMLDB_DATA_PATH: ${{ github.workspace }}/BilayerData
+      FMDL_DATA_PATH: ${{ github.workspace }}/BilayerData
       NMLDB_SIMU_PATH: ${{ github.workspace }}/BilayerData/Simulations
     steps:
       - name: Checkout BilayerData
@@ -35,7 +35,7 @@ jobs:
       - name: Checkout Databank
         uses: actions/checkout@v4
         with:
-          repository: NMRLipids/Databank
+          repository: NMRLipids/FAIRMD_lipids
           ref: main
           path: Databank
 

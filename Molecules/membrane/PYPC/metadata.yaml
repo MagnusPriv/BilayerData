@@ -1,7 +1,7 @@
 NMRlipids:
   id: PYPC
   name: 1-(16:0)-2-(16:1$^\Delta9$)-sn-glycero-3-phosphocholine
-  charge:
+  charge: 0
 sameAs:
   ChEBI: CHEBI:74000
   pubchem.compound: 60023531
@@ -15,4 +15,30 @@ bioschema_properties:
   inChI: InChI=1S/C40H78NO8P/c1-6-8-10-12-14-16-18-20-22-24-26-28-30-32-39(42)46-36-38(37-48-50(44,45)47-35-34-41(3,4)5)49-40(43)33-31-29-27-25-23-21-19-17-15-13-11-9-7-2/h17,19,38H,6-16,18,20-37H2,1-5H3/b19-17-/t38-/m1/s1
   inChIKey: QIBZFHLFHCIUOT-NPBIGWJUSA-N
   molecularFormula: C40H78NO8P
-  MolecularWeight: '732'
+  molecularWeight: '732'
+  name: '[(2R)-3-hexadecanoyloxy-2-[(Z)-hexadec-9-enoyl]oxypropyl] 2-(trimethylazaniumyl)ethyl
+    phosphate'
+  image: https://pubchem.ncbi.nlm.nih.gov/image/imgsrv.fcgi?cid=6443788&t=l
+  alternateName:
+  - PC(16:0/16:1(9Z))
+  - 1-hexadecanoyl-2-(9Z-hexadecenoyl)-sn-glycero-3-phosphocholine zwitterion
+  - (2R)-2-[(9Z)-hexadec-9-enoyloxy]-3-(palmitoyloxy)propyl 2-(trimethylammonio)ethyl
+    phosphate
+  - (2R)-3-(hexadecanoyloxy)-2-[(9Z)-hexadec-9-enoyloxy]propyl 2-(trimethylammonio)ethyl
+    phosphate
+  - sn-1-palmitoyl-2-palmitoleoylphosphatidylcholine
+  - 1-Palmitoyl-2-palmitoleoyl-sn-glycero-3-phosphocholine
+  - (R-(Z))-4-hydroxy-N,N,N-trimethyl-10-oxo-7-((1-oxo-9-hexadecenyl)oxy)-3,5,9-trioxa-4-phosphapentacosan-1-aminium,
+    hydroxide, inner salt, 4-oxide
+  - 1-hexadecanoyl-2-(9Z)-hexadecenoyl-sn-glycero-3-phosphocholine
+  - 1-C16:0-2-C16:1(ω-7)-phosphatidylcholine
+  - 1-hexadecanoyl-2-(9Z-hexadecenoyl)-sn-glycero-3-phosphocholine
+  - PC(16:0/16:1)
+  - Phosphatidylcholine(16:0/16:1)
+  - PC(16:0/16:1ω7)
+  - Phosphatidylcholine(32:1)
+  - Phosphatidylcholine(16:0/16:1ω7)
+  - PC(32:1)
+  - 1-palmitoyl-2-palmitoleoyl-GPC (16:0/16:1)
+  - GPC(16:0/16:1)
+  - 1-palmitoyl-2-palmitoleoyl-GPC
