@@ -18,21 +18,36 @@ jobs:
       FMDL_DATA_PATH: ${{ github.workspace }}/BilayerData
     steps:
       - name: Checkout BilayerData
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
           path: BilayerData
           persist-credentials: false
-
+  
+      - name: Check if info.yml exists
+        id: check_info
+        working-directory: BilayerData
+        shell: bash
+        run: |
+          if [ -f "UserData/info.yml" ]; then
+            echo "found=true" >> $GITHUB_OUTPUT
+            echo "info.yml found"
+          else
+            echo "found=false" >> $GITHUB_OUTPUT
+            echo "info.yml not found, skipping further steps"
+          fi
+  
       - name: Checkout Databank
-        uses: actions/checkout@v4
+        if: steps.check_info.outputs.found == 'true'
+        uses: actions/checkout@v5
         with:
           repository: NMRLipids/Databank
           ref: main
           path: Databank
-
+  
       - name: Run dry run of AddData 
+        if: steps.check_info.outputs.found == 'true'
         env:
           TQDM_DISABLE: True
         working-directory: Databank
