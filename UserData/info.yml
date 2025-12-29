@@ -1,0 +1,16 @@
+DOI: 10.5281/zenodo.5767451
+TRJ: CHOL0_small.xtc
+TPR: CHOL0_small.tpr
+SOFTWARE: gromacs
+PREEQTIME: 5.2
+TIMELEFTOUT: 10
+SYSTEM: 64POPC_3200SOL_298K
+AUTHORS_CONTACT: Magnus
+FF: Lipid14
+COMPOSITION:
+  POPC:
+    NAME: POPC
+    MAPPING: mappingPOPCcharmm.yaml
+  SOL:
+    NAME: TIP3
+    MAPPING: mappingTIP3Plipid17.yaml
