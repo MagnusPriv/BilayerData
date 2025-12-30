@@ -33,5 +33,5 @@ jobs:
       - name: Zenodo speedtest to workspace (on /persistent01)
         run: |
           echo "Downloading to: $(pwd)"
-          time wget -O production_ci_test.xtc "https://zenodo.org/records/10261345/files/production.xtc?download=1"
+          wget -O production_ci_test.xtc "https://zenodo.org/records/10261345/files/production.xtc?download=1"
           ls -lh production_ci_test.xtc
