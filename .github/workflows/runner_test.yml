@@ -1,0 +1,37 @@
+name: Zenodo speedtest on runner
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch: 
+
+jobs:
+  AddData:
+    runs-on: nrec-large
+    environment: user_data_addition
+    timeout-minutes: 1440
+    container:
+      image: nmrlipids/core
+      options: --user root
+    env:
+      FMDL_DATA_PATH: ${{ github.workspace }}/BilayerData
+      MEM_CUTOFF: 1500000000
+    steps:
+      - name: Show workspace info
+        run: |
+          echo "pwd: $(pwd)"
+          df -h .
+          echo "GITHUB_WORKSPACE=$GITHUB_WORKSPACE"
+          ls -al
+
+      - name: Install wget
+        run: |
+          apt-get update
+          apt-get install -y wget
+
+      - name: Zenodo speedtest to workspace (on /persistent01)
+        run: |
+          echo "Downloading to: $(pwd)"
+          time wget -O production_ci_test.xtc "https://zenodo.org/records/10261345/files/production.xtc?download=1"
+          ls -lh production_ci_test.xtc
