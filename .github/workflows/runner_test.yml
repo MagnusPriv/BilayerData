@@ -26,4 +26,9 @@ jobs:
           sudo docker run --rm \
             -v /persistent01:/persistent01 \
             nmrlipids/core \
-            bash -lc 'cd /persistent01 && wget -4 -O production_ci_hostdocker.xtc "https://zenodo.org/records/10261345/files/production.xtc?download=1"'
+            bash -lc '
+              apt-get update &&
+              apt-get install -y wget &&
+              wget -4 -O production_ci_hostdocker.xtc "https://zenodo.org/records/10261345/files/production.xtc?download=1"
+            '
+      
