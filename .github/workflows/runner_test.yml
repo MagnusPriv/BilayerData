@@ -19,23 +19,14 @@ jobs:
       MEM_CUTOFF: 1500000000
 
     steps:
-      - name: Show host + persistent01 info
+      - name: Install speedtest-cli
         run: |
-          echo "Host: $(hostname)"
-          echo
-          echo "pwd: $(pwd)"
-          df -h /
-          df -h /persistent01 || true
-          ls -al /persistent01 || true
-          
-      - name: Show MTU inside job container
-        run: |
-          echo "=== ip link show eth0 ==="
-          ip link show eth0 || true
-          echo
-          echo "=== MTU via sysfs ==="
-          cat /sys/class/net/eth0/mtu || true
+          apt-get update
+          apt-get install -y speedtest-cli
 
+      - name: Run speedtest in job container
+        run: |
+          speedtest-cli --simple
       - name: Download via host docker (nmrlipids/core)
         run: |
           sudo docker run --rm \
