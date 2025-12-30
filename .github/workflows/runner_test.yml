@@ -30,8 +30,8 @@ jobs:
           apt-get update
           apt-get install -y wget
 
-      - name: Zenodo speedtest to workspace (on /persistent01)
+      - name: Zenodo speedtest (IPv4 forced)
         run: |
           echo "Downloading to: $(pwd)"
-          wget -O production_ci_test.xtc "https://zenodo.org/records/10261345/files/production.xtc?download=1"
-          ls -lh production_ci_test.xtc
+          wget -4 -O production_ci_test_ipv4.xtc \
+            "https://zenodo.org/records/10261345/files/production.xtc?download=1"
