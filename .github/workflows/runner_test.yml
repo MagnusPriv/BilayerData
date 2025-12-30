@@ -4,34 +4,26 @@ permissions:
   contents: read
 
 on:
-  workflow_dispatch: 
+  workflow_dispatch:
 
 jobs:
-  AddData:
+  speedtest:
     runs-on: nrec-large
-    environment: user_data_addition
-    timeout-minutes: 1440
-    container:
-      image: nmrlipids/core
-      options: --user root
-    env:
-      FMDL_DATA_PATH: ${{ github.workspace }}/BilayerData
-      MEM_CUTOFF: 1500000000
+    timeout-minutes: 120
+
     steps:
-      - name: Show workspace info
+      - name: Show host + persistent01 info
         run: |
+          echo "Host: $(hostname)"
+          echo
           echo "pwd: $(pwd)"
-          df -h .
-          echo "GITHUB_WORKSPACE=$GITHUB_WORKSPACE"
-          ls -al
+          df -h /
+          df -h /persistent01 || true
+          ls -al /persistent01 || true
 
-      - name: Install wget
+      - name: Download via host docker (nmrlipids/core)
         run: |
-          apt-get update
-          apt-get install -y wget
-
-      - name: Zenodo speedtest (IPv4 forced)
-        run: |
-          echo "Downloading to: $(pwd)"
-          wget -4 -O production_ci_test_ipv4.xtc \
-            "https://zenodo.org/records/10261345/files/production.xtc?download=1"
+          sudo docker run --rm \
+            -v /persistent01:/persistent01 \
+            nmrlipids/core \
+            bash -lc 'cd /persistent01 && wget -4 -O production_ci_hostdocker.xtc "https://zenodo.org/records/10261345/files/production.xtc?download=1"'
