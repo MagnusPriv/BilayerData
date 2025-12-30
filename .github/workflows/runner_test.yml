@@ -7,9 +7,16 @@ on:
   workflow_dispatch:
 
 jobs:
-  speedtest:
+  AddData:
     runs-on: nrec-large
-    timeout-minutes: 120
+    environment: user_data_addition
+    timeout-minutes: 1440
+    container:
+      image: nmrlipids/core
+      options: --user root
+    env:
+      FMDL_DATA_PATH: ${{ github.workspace }}/BilayerData
+      MEM_CUTOFF: 1500000000
 
     steps:
       - name: Show host + persistent01 info
@@ -20,6 +27,14 @@ jobs:
           df -h /
           df -h /persistent01 || true
           ls -al /persistent01 || true
+          
+      - name: Show MTU inside job container
+        run: |
+          echo "=== ip link show eth0 ==="
+          ip link show eth0 || true
+          echo
+          echo "=== MTU via sysfs ==="
+          cat /sys/class/net/eth0/mtu || true
 
       - name: Download via host docker (nmrlipids/core)
         run: |
