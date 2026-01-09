@@ -1,6 +1,8 @@
 DOI: 10.5281/zenodo.5767451
-TRJ: CHOL0_small.xtc
-TPR: CHOL0_small.tpr
+TRJ:
+- - CHOL0_small.xtc
+TPR:
+- - CHOL0_small.tpr
 SOFTWARE: gromacs
 PREEQTIME: 0
 TIMELEFTOUT: 5
@@ -11,6 +13,17 @@ COMPOSITION:
   POPC:
     NAME: POPC
     MAPPING: mappingPOPCcharmm.yaml
+    COUNT:
+    - 32
+    - 32
   SOL:
     NAME: TIP3
     MAPPING: mappingTIP3PCHARMMgui.yaml
+    COUNT: 3200
+TRAJECTORY_SIZE: 31058232
+TRJLENGTH: 471000.0
+TEMPERATURE: 298.15
+NUMBER_OF_ATOMS: 18176
+DATEOFRUNNING: 09/01/2026
+TYPEOFSYSTEM: lipid bilayer
+ID: -1
